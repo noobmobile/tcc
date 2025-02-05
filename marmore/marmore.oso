@@ -1,94 +1,90 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.13.7.0
-# options: -o C:\Users\donot\AppData\Local\Temp\tmpt15eaqof.oso -IC:\Program Files\Blender Foundation\Blender 4.2\4.2\scripts\addons_core\cycles\shader
-shader DiagonalMarbleStripes
-param	float	scale	100		%read{22,22} %write{2147483647,-1}
-param	float	angle	45		%read{1,1} %write{2147483647,-1}
-param	float	noise_scale	5		%read{18,18} %write{2147483647,-1}
-param	float	noise_strength	0.200000003		%read{20,20} %write{2147483647,-1}
-param	color	color1	0 0 0		%read{25,25} %write{2147483647,-1}
-param	color	color2	1 1 1		%read{25,25} %write{2147483647,-1}
-oparam	color	result	0 0 0		%read{2147483647,-1} %write{25,25}
-global	point	P	%read{3,3} %write{2147483647,-1}
-local	float	r	%read{5,15} %write{1,1}
-local	point	pos	%read{4,18} %write{3,3}
-local	float	x	%read{21,22} %write{10,21}
-local	float	y	%read{2147483647,-1} %write{17,17}
-local	float	n	%read{20,20} %write{19,19}
-local	float	stripes	%read{24,24} %write{23,23}
-local	float	factor	%read{25,25} %write{24,24}
-const	string	$const1	"radians"		%read{0,0} %write{2147483647,-1}
-const	float	$const2	0.0174532924		%read{1,1} %write{2147483647,-1}
-const	string	$const3	"object"		%read{3,3} %write{2147483647,-1}
-const	string	$const4	"transform"		%read{2,2} %write{2147483647,-1}
-const	string	$const5	"common"		%read{3,3} %write{2147483647,-1}
-const	int	$const6	0		%read{4,11} %write{2147483647,-1}
-temp	float	$tmp1	%read{6,6} %write{4,4}
-temp	float	$tmp2	%read{6,6} %write{5,5}
-temp	float	$tmp3	%read{10,10} %write{6,6}
-const	int	$const7	1		%read{7,14} %write{2147483647,-1}
-temp	float	$tmp4	%read{9,9} %write{7,7}
-temp	float	$tmp5	%read{9,9} %write{8,8}
-temp	float	$tmp6	%read{10,10} %write{9,9}
-temp	float	$tmp7	%read{13,13} %write{11,11}
-temp	float	$tmp8	%read{13,13} %write{12,12}
-temp	float	$tmp9	%read{17,17} %write{13,13}
-temp	float	$tmp10	%read{16,16} %write{14,14}
-temp	float	$tmp11	%read{16,16} %write{15,15}
-temp	float	$tmp12	%read{17,17} %write{16,16}
-const	string	$const8	"perlin"		%read{19,19} %write{2147483647,-1}
-temp	point	$tmp13	%read{19,19} %write{18,18}
-temp	float	$tmp14	%read{21,21} %write{20,20}
-temp	float	$tmp15	%read{23,23} %write{22,22}
-const	float	$const9	-0.100000001		%read{24,24} %write{2147483647,-1}
-const	float	$const10	0.100000001		%read{24,24} %write{2147483647,-1}
+# options: -o C:\Users\donot\AppData\Local\Temp\tmp8bcrzrhu.oso -IC:\Program Files\Blender Foundation\Blender 4.2\4.2\scripts\addons_core\cycles\shader
+shader textura
+param	float	Escala	10		%read{8,17} %write{2147483647,-1}
+param	float	Frequencia	25		%read{21,21} %write{2147483647,-1}
+param	float	Oitavas	4		%read{6,6} %write{2147483647,-1}
+param	float	Persistencia	0.5		%read{13,13} %write{2147483647,-1}
+param	float	Lacunaridade	2		%read{14,14} %write{2147483647,-1}
+param	point	Posicao	0 0 0		%read{6,19} %write{0,0} %initexpr
+oparam	color	Cor	0 0 0		%read{2147483647,-1} %write{26,26}
+global	point	P	%read{0,0} %write{2147483647,-1}
+local	float	valorRuido	%read{6,17} %write{1,16}
+local	float	amplitude	%read{6,16} %write{2,16}
+local	float	frequencia	%read{6,16} %write{3,16}
+local	int	___362_i	%read{6,16} %write{5,16}
+local	float	marmore	%read{24,26} %write{23,25}
+const	float	$const1	0		%read{1,1} %write{2147483647,-1}
+const	float	$const2	1		%read{2,3} %write{2147483647,-1}
+const	int	$const3	0		%read{5,18} %write{2147483647,-1}
+temp	int	$tmp1	%read{6,16} %write{6,16}
+temp	int	$tmp2	%read{4,16} %write{5,16}
+temp	float	$tmp3	%read{6,16} %write{6,16}
+temp	point	$tmp4	%read{6,16} %write{6,16}
+temp	point	$tmp5	%read{6,16} %write{6,16}
+temp	float	$tmp6	%read{6,16} %write{6,16}
+const	int	$const4	1		%read{16,19} %write{2147483647,-1}
+temp	int	$tmp7	%read{2147483647,-1} %write{6,16}
+temp	float	$tmp8	%read{22,22} %write{17,17}
+temp	float	$tmp9	%read{20,20} %write{18,18}
+temp	float	$tmp10	%read{20,20} %write{19,19}
+temp	float	$tmp11	%read{21,21} %write{20,20}
+temp	float	$tmp12	%read{22,22} %write{21,21}
+temp	float	$tmp13	%read{23,23} %write{22,22}
+const	float	$const5	0.5		%read{24,25} %write{2147483647,-1}
+temp	float	$tmp14	%read{25,25} %write{24,24}
+code Posicao
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:8
+#     output color Cor = color(0.0)    
+	assign		Posicao P 	%filename{"C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl"} %line{8} %argrw{"wr"}
 code ___main___
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:13
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:12
+#     float amplitude = 1.0;
+	assign		valorRuido $const1 	%filename{"C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl"} %line{12} %argrw{"wr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:13
+#     float frequencia = 1.0;
+	assign		amplitude $const2 	%line{13} %argrw{"wr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:14
 # 
-	functioncall	$const1 2 	%filename{"C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl"} %line{13} %argrw{"r"}
-# C:\\\\Program Files\\\\Blender Foundation\\\\Blender 4.2\\\\4.2\\\\scripts\\\\addons_core\\\\cycles\\\\shader/stdosl.h:65
-# float  radians (float x)  { return x*(M_PI/180.0); }
-	mul		r angle $const2 	%filename{"C:\\\\Program Files\\\\Blender Foundation\\\\Blender 4.2\\\\4.2\\\\scripts\\\\addons_core\\\\cycles\\\\shader/stdosl.h"} %line{65} %argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:16
-#     float x = pos[0] * cos(r) - pos[1] * sin(r);
-	functioncall	$const4 4 	%filename{"C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl"} %line{16} %argrw{"r"}
-# C:\\\\Program Files\\\\Blender Foundation\\\\Blender 4.2\\\\4.2\\\\scripts\\\\addons_core\\\\cycles\\\\shader/stdosl.h:263
-# point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	pos $const5 $const3 P 	%filename{"C:\\\\Program Files\\\\Blender Foundation\\\\Blender 4.2\\\\4.2\\\\scripts\\\\addons_core\\\\cycles\\\\shader/stdosl.h"} %line{263} %argrw{"wrrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:17
-#     float y = pos[0] * sin(r) + pos[1] * cos(r);
-	compref		$tmp1 pos $const6 	%filename{"C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl"} %line{17} %argrw{"wrr"}
-	cos		$tmp2 r 	%argrw{"wr"}
-	mul		$tmp3 $tmp1 $tmp2 	%argrw{"wrr"}
-	compref		$tmp4 pos $const7 	%argrw{"wrr"}
-	sin		$tmp5 r 	%argrw{"wr"}
-	mul		$tmp6 $tmp4 $tmp5 	%argrw{"wrr"}
-	sub		x $tmp3 $tmp6 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:18
+	assign		frequencia $const2 	%line{14} %argrw{"wr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:16
+#         valorRuido += amplitude * snoise(Posicao * Escala * frequencia);
+	for		$tmp2 6 8 15 17 	%line{16} %argrw{"r"}
+	assign		___362_i $const3 	%argrw{"wr"}
+	lt		$tmp1 ___362_i Oitavas 	%argrw{"wrr"}
+	neq		$tmp2 $tmp1 $const3 	%argrw{"wrr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:17
+#         amplitude *= Persistencia;
+	mul		$tmp4 Posicao Escala 	%line{17} %argrw{"wrr"}
+	mul		$tmp5 $tmp4 frequencia 	%argrw{"wrr"}
+	snoise		$tmp3 $tmp5 	%argrw{"wr"}
+	mul		$tmp6 amplitude $tmp3 	%argrw{"wrr"}
+	add		valorRuido valorRuido $tmp6 	%argrw{"wrr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:18
+#         frequencia *= Lacunaridade;
+	mul		amplitude amplitude Persistencia 	%line{18} %argrw{"wrr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:19
+#     }
+	mul		frequencia frequencia Lacunaridade 	%line{19} %argrw{"wrr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:16
+#         valorRuido += amplitude * snoise(Posicao * Escala * frequencia);
+	assign		$tmp7 ___362_i 	%line{16} %argrw{"wr"}
+	add		___362_i ___362_i $const4 	%argrw{"wrr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:22
 # 
-	compref		$tmp7 pos $const6 	%line{18} %argrw{"wrr"}
-	sin		$tmp8 r 	%argrw{"wr"}
-	mul		$tmp9 $tmp7 $tmp8 	%argrw{"wrr"}
-	compref		$tmp10 pos $const7 	%argrw{"wrr"}
-	cos		$tmp11 r 	%argrw{"wr"}
-	mul		$tmp12 $tmp10 $tmp11 	%argrw{"wrr"}
-	add		y $tmp9 $tmp12 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:21
-#     x += n * noise_strength;
-	mul		$tmp13 pos noise_scale 	%line{21} %argrw{"wrr"}
-	noise		n $const8 $tmp13 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:22
+	mul		$tmp8 Escala valorRuido 	%line{22} %argrw{"wrr"}
+	compref		$tmp9 Posicao $const3 	%argrw{"wrr"}
+	compref		$tmp10 Posicao $const4 	%argrw{"wrr"}
+	add		$tmp11 $tmp9 $tmp10 	%argrw{"wrr"}
+	mul		$tmp12 Frequencia $tmp11 	%argrw{"wrr"}
+	add		$tmp13 $tmp8 $tmp12 	%argrw{"wrr"}
+	sin		marmore $tmp13 	%argrw{"wr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:24
 # 
-	mul		$tmp14 n noise_strength 	%line{22} %argrw{"wrr"}
-	add		x x $tmp14 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:25
-# 
-	mul		$tmp15 scale x 	%line{25} %argrw{"wrr"}
-	sin		stripes $tmp15 	%argrw{"wr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:28
-# 
-	smoothstep	factor $const9 $const10 stripes 	%line{28} %argrw{"wrrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore.osl:31
+	mul		$tmp14 $const5 marmore 	%line{24} %argrw{"wrr"}
+	add		marmore $const5 $tmp14 	%argrw{"wrr"}
+# C:\\Users\\donot\\Desktop\\upload\\marmore\\marmore.osl:26
 # }
-	mix		result color1 color2 factor 	%line{31} %argrw{"wrrr"}
+	color		Cor marmore marmore marmore 	%line{26} %argrw{"wrrr"}
 	end

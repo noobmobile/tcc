@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.13.7.0
-# options: -o C:\Users\donot\AppData\Local\Temp\tmpwa5cn3vt.oso -IC:\Program Files\Blender Foundation\Blender 4.2\4.2\scripts\addons_core\cycles\shader
+# options: -o C:\Users\donot\AppData\Local\Temp\tmp3y8pazb8.oso -IC:\Program Files\Blender Foundation\Blender 4.2\4.2\scripts\addons_core\cycles\shader
 shader textura
 param	float	Escala	10		%read{8,17} %write{2147483647,-1}
 param	float	Frequencia	25		%read{22,22} %write{2147483647,-1}
@@ -38,43 +38,43 @@ temp	float	$tmp14	%read{24,24} %write{23,23}
 const	float	$const5	0.5		%read{25,26} %write{2147483647,-1}
 temp	float	$tmp15	%read{26,26} %write{25,25}
 code Posicao
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:8
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:8
 #     color cor1 = color(0.5, 0.2, 0.067),
-	assign		Posicao P 	%filename{"C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl"} %line{8} %argrw{"wr"}
+	assign		Posicao P 	%filename{"C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl"} %line{8} %argrw{"wr"}
 code ___main___
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:14
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:14
 #     float amplitude = 1.0;
-	assign		valorRuido $const1 	%filename{"C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl"} %line{14} %argrw{"wr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:15
+	assign		valorRuido $const1 	%filename{"C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl"} %line{14} %argrw{"wr"}
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:15
 #     float frequencia = 1.0;
 	assign		amplitude $const2 	%line{15} %argrw{"wr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:16
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:16
 # 
 	assign		frequencia $const2 	%line{16} %argrw{"wr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:18
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:18
 #         valorRuido += amplitude * snoise(Posicao * Escala * frequencia);
 	for		$tmp2 6 8 15 17 	%line{18} %argrw{"r"}
 	assign		___362_i $const3 	%argrw{"wr"}
 	lt		$tmp1 ___362_i Oitavas 	%argrw{"wrr"}
 	neq		$tmp2 $tmp1 $const3 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:19
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:19
 #         amplitude *= Persistencia;
 	mul		$tmp4 Posicao Escala 	%line{19} %argrw{"wrr"}
 	mul		$tmp5 $tmp4 frequencia 	%argrw{"wrr"}
 	snoise		$tmp3 $tmp5 	%argrw{"wr"}
 	mul		$tmp6 amplitude $tmp3 	%argrw{"wrr"}
 	add		valorRuido valorRuido $tmp6 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:20
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:20
 #         frequencia *= Lacunaridade;
 	mul		amplitude amplitude Persistencia 	%line{20} %argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:21
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:21
 #     }
 	mul		frequencia frequencia Lacunaridade 	%line{21} %argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:18
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:18
 #         valorRuido += amplitude * snoise(Posicao * Escala * frequencia);
 	assign		$tmp7 ___362_i 	%line{18} %argrw{"wr"}
 	add		___362_i ___362_i $const4 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:24
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:24
 # 
 	mul		$tmp8 Escala valorRuido 	%line{24} %argrw{"wrr"}
 	compref		$tmp11 Posicao $const3 	%argrw{"wrr"}
@@ -84,11 +84,11 @@ code ___main___
 	mul		$tmp13 Frequencia $tmp9 	%argrw{"wrr"}
 	add		$tmp14 $tmp8 $tmp13 	%argrw{"wrr"}
 	sin		madeira $tmp14 	%argrw{"wr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:26
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:26
 # 
 	mul		$tmp15 $const5 madeira 	%line{26} %argrw{"wrr"}
 	add		madeira $const5 $tmp15 	%argrw{"wrr"}
-# C:\\Users\\donot\\Desktop\\Nova pasta\\marmore2.osl:30
+# C:\\Users\\donot\\Desktop\\upload\\madeira\\madeira.osl:30
 # }
 	mix		Cor cor1 cor2 madeira 	%line{30} %argrw{"wrrr"}
 	end
